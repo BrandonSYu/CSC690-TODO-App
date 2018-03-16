@@ -15,6 +15,7 @@ class SecondViewController: UIViewController {
         if(input.text != ""){
         todolist.append(input.text!)
         input.text = ""
+            
         }
     }
     override func viewDidLoad() {

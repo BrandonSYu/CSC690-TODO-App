@@ -8,8 +8,8 @@
 
 import UIKit
 
-var todolist = ["Get Food", "Mail", "Grocery Shopping"]
-
+// sample todolist var todolist = ["Finish Todo app", "Get Food", "Deliver Mail", "Random Errands", "Study...maybe"]
+var todolist = [String]() //empty todo list
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
 
