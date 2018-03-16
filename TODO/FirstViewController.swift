@@ -8,7 +8,7 @@
 
 import UIKit
 
-// sample todolist var todolist = ["Finish Todo app", "Get Food", "Deliver Mail", "Random Errands", "Study...maybe"]
+//var todolist = ["Finish Todo app", "Get Food", "Deliver Mail", "Random Errands", "Study...maybe"]
 var todolist = [String]() //empty todo list
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
@@ -21,8 +21,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        tableCell.textLabel?.text=todolist[indexPath.row]
+        let tableCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tableCell")
+        tableCell.textLabel?.text="\(indexPath.row + 1).  " + todolist[indexPath.row]
         return (tableCell)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
@@ -35,6 +35,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
         }
