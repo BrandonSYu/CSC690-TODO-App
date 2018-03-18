@@ -9,7 +9,7 @@
 import UIKit
 
 //var todolist = ["Finish Todo app", "Get Food", "Deliver Mail", "Random Errands", "Study...maybe"]
-var todolist = [String]() //empty todo list
+//var todolist = [String]() //empty todo list
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
 
@@ -17,23 +17,29 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return(todolist.count)
+        if let todo = todoList {
+            return todo.count
+        }else {
+            return 0
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tableCell")
-        tableCell.textLabel?.text="\(indexPath.row + 1).  " + todolist[indexPath.row]
-        return (tableCell)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        if let todo = todoList {
+            cell.textLabel?.text = todo[indexPath.row]
+        }
+        return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == UITableViewCellEditingStyle.delete
         {
-            todolist.remove(at: indexPath.row)
+            todoList?.remove(at: indexPath.row)
             myTableView.reloadData()
         }
     }
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark{
@@ -43,13 +49,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
         }
     }
-    
+    */
     override func viewDidAppear(_ animated: Bool) {
+        myTableView.reloadData()
         myTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myTableView.delegate = self
+        myTableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 

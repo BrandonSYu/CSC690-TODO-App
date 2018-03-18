@@ -12,8 +12,8 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var input: UITextField!
     @IBAction func addItem(_ sender: Any) {
-        if(input.text != ""){
-        todolist.append(input.text!)
+        if(input.text != "" && input.text != nil){
+        todoList?.append(input.text!)
         input.text = ""
             
         }
