@@ -29,8 +29,21 @@ class TODOUITests: XCTestCase {
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
+        
+        var todoList = ["Finish Todo app", "Get Food", "Deliver Mail", "Random Errands", "Study...maybe"]
+        var checkList = [false, false, false, false, false]
+        XCTAssertEqual(todoList.contains("Finish Todo app"),true)
+        XCTAssertEqual(todoList.contains("Get Food"),true)
+        XCTAssertEqual(todoList.contains("Deliver Mail"),true)
+        XCTAssertEqual(todoList.contains("Random Errands"),true)
+        XCTAssertEqual(todoList.contains("Study...maybe"),true)
+        XCTAssertEqual(checkList[0] == false,true)
+        XCTAssertEqual(checkList[1] == false,true)
+        XCTAssertEqual(checkList[2] == false,true)
+        XCTAssertEqual(checkList[3] == false,true)
+        //XCTAssert(didSelectRowAt(0))
+        //XCTAssert(didSelectRowAt(2))
+        XCTAssertEqual(checkList[0] == false ,false)
+        XCTAssertEqual(checkList[2] == false,false)
+}
 }

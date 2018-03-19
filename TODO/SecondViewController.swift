@@ -8,14 +8,18 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController { //controls Add tasks
 
     @IBOutlet weak var input: UITextField!
-    @IBAction func addItem(_ sender: Any) {
+    
+    @IBAction func addItem(_ sender: Any) { //add item given an input. append to both todoList and checkList.
         if(input.text != "" && input.text != nil){
         todoList?.append(input.text!)
+        //print(todoList?.count ?? 0)
+        checkList?.append(false)
+        saveData(todoList: todoList!)
+        saveDataCheck(checkList: checkList!)
         input.text = ""
-            
         }
     }
     override func viewDidLoad() {
